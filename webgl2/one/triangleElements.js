@@ -24,8 +24,11 @@ var positions = [
 var indices = [
   0,1,2
 ];
-var positionBuffer = webgl.createBuffer(gl,gl.ARRAY_BUFFER,webgl.arrayData(positions));
-var indexBuffer = webgl.createBuffer(gl,gl.ELEMENT_ARRAY_BUFFER,webgl.indexData(indices));
+
+var positionBuffer = gl.createBuffer();
+webgl.setBuffer(gl,positionBuffer,gl.ARRAY_BUFFER,webgl.arrayData(positions));
+var indexBuffer = gl.createBuffer();
+webgl.setBuffer(gl,indexBuffer,gl.ELEMENT_ARRAY_BUFFER,webgl.indexData(indices));
 webgl.addArrayDataToAttrib(gl,webgl.getFromProgram(gl,program,'position attrib'),positionBuffer,3);
 gl.uniform4fv(webgl.getFromProgram(gl,program,'color uniform'),[Math.random(),Math.random(),Math.random(),1]);
 function render(){
