@@ -46,13 +46,13 @@ var webgl = {
     return new Float32Array(data)
   },
   setBuffer:function(gl,buffer,type,data,draw){
-  gl.bindBuffer(buffer,type);
+  gl.bindBuffer(type,buffer)
   gl.bufferData(type,data,draw || gl.STATIC_DRAW);
   return buffer;
  },
   addArrayDataToAttrib:function(gl,loc,buffer,count){
   gl.enableVertexAttribArray(loc);
-  gl.vertexAttribPointer(count,gl.FLOAT,false,0,0);
+  gl.vertexAttribPointer(0,count,gl.FLOAT,false,0,0);
  },
   indexData:function(a){
   return new Uint16Array(a);
